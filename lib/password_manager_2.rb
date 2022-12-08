@@ -17,13 +17,11 @@ class PasswordManager2
     
     def add(service, password)
         if service_exists?(service)
-            "ERROR: Service names must be unique"
+            "ERROR: Service names must be unique"  
+        elsif password_exists?(password)
+            "ERROR: Passwords must be unique"
         else
-            if password_exists?(password)
-                "ERROR: Passwords must be unique"
-            else
-                @password_data.merge!(service => {'password' => password, 'added_on' => Time.now})
-            end
+            @password_data.merge!(service => {'password' => password, 'added_on' => Time.now})
         end
     end
     
